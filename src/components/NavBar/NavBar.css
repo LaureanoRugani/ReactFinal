@@ -1,0 +1,9 @@
+.logoMate {
+    height: 5em;
+    width: 5em;
+    border-radius: 40%;
+}
+
+.nav-link:hover {
+    background-color: rgba(255, 0, 0, 0.168)
+}
