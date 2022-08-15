@@ -1,28 +1,52 @@
-import Card from 'react-bootstrap/Card';
-import React from 'react'
+import React, { useState } from 'react'
 import Counter from '../ItemCount/ItemCount'
 import Button from 'react-bootstrap/Button';
+import { Link } from 'react-router-dom';
+import { useCartContext } from "../../context/CartContext";
 
-export default function ItemDetail({imagen, nombre, precio, stock}) {
-  const productoAñadido = () => {
-    return (
-        alert("Producto agregado")
-    )
-}
-    return (
-        <div className='product-detail container-flex row justify-content-center col-12 '>
-          { <Card data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-delay="500" className='col-6 mx-auto m-2 p-2 card-producto '>
-            <Card.Img className='p-3 img-fluid shadow p-3 mb-5 mx-auto bg-body rounded imgProduct ' style={{width:'18em', height:'18em'}}  src={imagen}  />
-            <Card.Body className='cardBody p-2 mx-auto' >
-              <Card.Title className="text-light fw-lighter" > {nombre} </Card.Title>
-              <Card.Text className="fw-bold fs-3 text-light">
-                  ${precio}
-              </Card.Text>
-              <Counter initial={1} stock={stock}/>
-              <Button onClick={productoAñadido} variant='btn  btn-primary btnCarrito mx-auto row '>Agregar a la lista</Button>
-            </Card.Body>
-          </Card> }
 
+export default function ItemDetail(props) {
+  const [irAlCarrito, setearCarrito] = useState(false);
+  const { addProducto } = useCartContext();
+
+  function agregarProducto(cantidad) {
+    setearCarrito(true);
+    addProducto(props, cantidad);
+    alert(`¡Muy bien, agregaste ${cantidad} ${props.categoria} ${props.nombre} con éxito!`);
+  }
+  return (
+      <div className="row flex col-12 mb-2 ">
+        <div className="col-sm ">
+          <div className="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 justify-content-center position-relative cardItem">
+            <div className="col p-4 d-flex flex-column position-static">
+              <h3 className="mb-0 cardTittle">{props.nombre}</h3>
+              <p className="card-text mb-auto p-1 fs-1 cardText">${props.precio}</p>
+            </div>
+            <div className="col-auto  d-lg-flex">
+              <img
+                src={props.imagen}
+                alt="product img"
+                className="img-fluid imagenProducto "
+              />
+            </div>
+            {irAlCarrito ? (
+              <div className="justify-content-center col-6">
+                <Link to="/cart">
+                  {" "}
+                  <Button className="btn btn-success">
+                    Finalizar Compra
+                  </Button>{" "}
+                </Link>
+              </div>
+            ) : (
+              <Counter initial={1} stock={props.stock} onAdd={agregarProducto} />
+            )}
+
+            <span className=" fs-3 text-center text-warning fw-bold">
+              Stock disponible : {props.stock}
+            </span>
+          </div>
         </div>
-    )
+      </div>
+  );
 }

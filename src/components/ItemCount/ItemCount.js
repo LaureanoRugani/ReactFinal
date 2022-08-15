@@ -1,33 +1,35 @@
-import { useState } from 'react'
-import './index.css'
+import { useEffect, useState } from 'react'
 import Button from 'react-bootstrap/Button';
 
-export default function Counter(props) {
-    const [Counter, setCounter] = useState(props.initial);
+export default function Counter({initial, stock, onAdd}) {
+    const [Counter, setCounter] = useState(parseInt (initial));
 
     function addCounter() {
-        if (Counter >= props.stock) {
-            alert(`El stock maximo es ${props.stock}`);
-        } else {
+            if (Counter <= stock) {
             setCounter(Counter + 1);
         }
 
     }
 
     function reduceCounter() {
-        if (Counter <= 1) {
-            alert("¡Usted no ha seleccionado ningun producto!")
-        } else {
+        if (Counter >= 1) {
             setCounter(Counter - 1)
         }
     }
 
+    useEffect(()=>{
+        setCounter(parseInt(initial))
+    }, [initial])
+
     return (
         <div className='container d-flex row justify-content-center  col-12 '>
-            <div className='container d-flex align-items-center col-7  text-center fw-bolder m-2'>
-                <Button variant='outline-success fs-5 shadow' onClick={addCounter}>+</Button>
-                <span className='m-3 text-dark fs-3'> {Counter}</span>
-                <Button variant='outline-danger fs-5 shadow' onClick={reduceCounter}  >-</Button>
+            <div className='container d-flex align-items-center col-6  text-center fw-bolder m-2'>
+                <Button disabled={Counter >= stock} variant=' btn btn-success  botonAdd fs-5 shadow' onClick={addCounter}>+</Button>
+                <span className='m-3 text-dark fs-1'> {Counter}</span>
+                <Button disabled={Counter <= 1} variant='btn btn-danger botonReduce fs-5 shadow' onClick={reduceCounter}  >-</Button>
+            </div>
+            <div className='justify-content-center col-6'>
+            <Button disabled={stock <= 0} onClick={() => onAdd(Counter)}  variant='btn btn-info'>Agregar al carrito</Button>
             </div>
         </div>
     )
