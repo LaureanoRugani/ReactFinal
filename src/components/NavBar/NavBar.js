@@ -29,11 +29,11 @@ function NavBarLogo(props) {
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="m-auto navLinks ">
-              <Nav.Link as={Link} to={"/viajes/America"} className='text-warning '>America</Nav.Link>
-              <Nav.Link as={Link} to={"/viajes/Europa"} className='text-warning'>Europa</Nav.Link>
-              <Nav.Link as={Link} to={"/viajes/Asia"} className='text-warning' >Asia</Nav.Link>
-              <Nav.Link as={Link} to={"/viajes/Africa"} className='text-warning' >Africa</Nav.Link>
-              <Nav.Link  as={Link} to={"/viajes/Oceania"} className='text-warning' >Oceania</Nav.Link>
+              <Nav.Link as={Link} to={"/category/America"} className='text-warning '>America</Nav.Link>
+              <Nav.Link as={Link} to={"/category/Europa"} className='text-warning'>Europa</Nav.Link>
+              <Nav.Link as={Link} to={"/category/Asia"} className='text-warning' >Asia</Nav.Link>
+              <Nav.Link as={Link} to={"/category/Africa"} className='text-warning' >Africa</Nav.Link>
+              <Nav.Link  as={Link} to={"/category/Oceania"} className='text-warning' >Oceania</Nav.Link>
             </Nav>
             <CartWidget/>
             </Navbar.Collapse>

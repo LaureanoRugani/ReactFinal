@@ -2,7 +2,7 @@
 export const data = [
     {
         id: 0,
-        categoria: "Viaje",
+        categoria: "Europa",
         nombre: "Viajes a Amsterdam",
         precio: 2900,
         stock: 10,
@@ -11,7 +11,7 @@ export const data = [
     },
     {
         id: 1,
-        categoria: "Viaje",
+        categoria: "Europa",
         nombre: "Viajes a Roma",
         precio: 1800,
         stock: 11,
@@ -20,7 +20,7 @@ export const data = [
     },
     {
         id: 2,
-        categoria: "Viaje",
+        categoria: "Europa",
         nombre: "Viajes a Praga",
         precio: 5800,
         stock: 18,

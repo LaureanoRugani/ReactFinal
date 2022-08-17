@@ -15,7 +15,7 @@ export default function ItemDetailContainer() {
   useEffect(() => {
     getFetch.then((res) =>{
       if(id){
-          setResultado(res.filter(products => products.id == id))
+          setResultado(res.find(products => products.id == id))
       }
       else setResultado(res)
     })
