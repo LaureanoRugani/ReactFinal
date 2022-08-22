@@ -1,0 +1,11 @@
+#carritoDeComprasIcono {
+    margin: 1em;
+    height: 3em;
+    width: 3em;
+    color: #fff;
+}
+#carritoDeComprasIcono:hover {
+    color: #bdd439 ;
+    
+}
+

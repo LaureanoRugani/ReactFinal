@@ -25,7 +25,7 @@ export default function Counter({initial, stock, onAdd}) {
         <div className='container d-flex row justify-content-center  col-12 '>
             <div className='container d-flex align-items-center col-6  text-center fw-bolder m-2'>
                 <Button disabled={Counter >= stock} variant=' btn btn-success  botonAdd fs-5 shadow' onClick={addCounter}>+</Button>
-                <span className='m-3 text-dark fs-1'> {Counter}</span>
+                <span className='m-3 text-white fs-1'> {Counter}</span>
                 <Button disabled={Counter <= 1} variant='btn btn-danger botonReduce fs-5 shadow' onClick={reduceCounter}  >-</Button>
             </div>
             <div className='justify-content-center col-6'>

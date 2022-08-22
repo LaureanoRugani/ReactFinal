@@ -33,8 +33,8 @@ export default function ItemDetail(props) {
               <div className="justify-content-center col-6">
                 <Link to="/cart">
                   {" "}
-                  <Button className="btn btn-success">
-                    Finalizar Compra
+                  <Button className="btn btn-dark">
+                    Ir al carrito
                   </Button>{" "}
                 </Link>
               </div>
