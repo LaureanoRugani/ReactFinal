@@ -4,7 +4,8 @@ import ItemDetail from '../ItemDetail/ItemDetail';
 import { useParams } from 'react-router-dom';
 import AOS from "aos";
 import "aos/dist/aos.css";
-import { getFetch } from '../Data/itemData';
+import { data, getFetch } from '../Data/itemData';
+import { getFirestore, doc, getDoc } from "firebase/firestore";
 
 export default function ItemDetailContainer() {
   const [loading, setLoading] = useState(true);
@@ -13,13 +14,12 @@ export default function ItemDetailContainer() {
   const {id} = useParams();
   
   useEffect(() => {
-    getFetch.then((res) =>{
-      if(id){
-          setResultado(res.find(products => products.id == id))
-      }
-      else setResultado(res)
-    })
-
+    AOS.init();
+    AOS.refresh();
+    const queryDatabase = getFirestore ()
+    const queryDoc = doc(queryDatabase, 'viajes', id)
+    getDoc(queryDoc)
+    .then(res => setResultado({id:res.id, ...res.data()}))
     .catch(()=>{
       setError(true)
     })
@@ -29,9 +29,9 @@ export default function ItemDetailContainer() {
   }, [id])
 
   return (
-    <div>
+    <div className='itemDetailContainer'>
       {
-        <ItemDetail {...resultado} />
+      loading ? <h4 className='text-dark text-center bg-warning '>Cargando productos...</h4>  : <ItemDetail {...resultado} />
       }
     </div>
   );

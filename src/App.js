@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import '../src/components/NavBar/NavBar'
 import IntroHome from './components/IntroHome/IntroHome';
 import NavBarLogo from './components/NavBar/NavBar';
@@ -11,7 +11,27 @@ import CartProvider from './context/CartContext';
 import Cart from './components/Cart/Cart';
 
 
+
+
+
 function App() {
+  
+
+
+  useEffect(() => {
+    // const app = initializeApp(firebaseConfig);
+
+    // const db = getFirestore(app) //base de datos
+    // const colRef = collection(db, 'viajes') ///referencia a la coleccion
+    // getDocs(colRef).then((snapshot) => {
+
+    // }, (error) => {
+
+    // });
+
+  }, [])
+
+    
 
 
   return (
